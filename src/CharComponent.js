@@ -15,7 +15,7 @@ const CharComponent = (props) => {
         <div
             style={style.char}
         >
-            he
+            {props.char}
         </div>
     )
 }

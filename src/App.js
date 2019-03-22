@@ -15,6 +15,8 @@ class App extends Component {
   }
 
   render() {
+    const chars = this.state.text.split('')
+
     return (
       <div>
         <ValidationComponent
@@ -25,8 +27,17 @@ class App extends Component {
           value={this.state.text}
           onChange={this.onInputTextChangeHandler}
         />
-        <CharComponent
-        />
+        <div>
+          {
+            chars.map(char => {
+              return (
+                <CharComponent
+                  char={char}
+                />
+              )
+            })
+          }
+        </div>
       </div>
     );
   }
