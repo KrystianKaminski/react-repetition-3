@@ -14,8 +14,17 @@ class App extends Component {
     })
   }
 
+  deleteSingleChartHandler = (id) => {
+    const copyOfTheState = [...this.state.text]
+    copyOfTheState.splice(id, 1)
+    const final = copyOfTheState.join('')
+    this.setState({
+      text: final
+    })
+  }
+
   render() {
-    const chars = this.state.text.split('')
+    const chars = [...this.state.text]
 
     return (
       <div>
@@ -29,10 +38,12 @@ class App extends Component {
         />
         <div>
           {
-            chars.map(char => {
+            chars.map((char, index) => {
               return (
                 <CharComponent
                   char={char}
+                  key={index}
+                  click={() => this.deleteSingleChartHandler(index)}
                 />
               )
             })
